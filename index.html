@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,16 +19,19 @@
             <span class="title">Paste video url:</span>
             <div class="field">
                 <input type="text" placeholder="https://www.youtube.com/watch?v=0w4K8yW8gOg" required>
+                <input class="hidden-input" type="hidden">
                 <div class="bottom-line"></div>
             </div>
         </div>
         <div class="preview-area">
-            <img class="thumbnail" src="img/img.jpg" alt="thumbnail">
+            <img class="thumbnail" src="" alt="thumbnail">
             <i class='bx bxs-cloud-download icon'></i>
             <span>Paste video url to see preview</span>
         </div>
         <button class="download-btn" type="submit">Download thumbnail</button>
     </form>
+
+    <script src="js/script.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 </html>
