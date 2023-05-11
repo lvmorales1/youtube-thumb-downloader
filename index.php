@@ -1,5 +1,15 @@
 <?php
+if (isset($_POST['button'])) {
+    $imgUrl = $_POST['imgurl'];
+    $ch = curl_init($imgUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $download = curl_exec($ch);
+    curl_close($ch);
 
+    header('Content-type: image/jpg');
+    header('Content-Disposition: attachment; filename="thumbnail.jpg"');
+    echo $download;
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,13 +23,13 @@
     <title>Youtube Thumbnail Downloader</title>
 </head>
 <body>
-    <form action="#">
+    <form action="<?=$_SERVER['PHP_SELF']?>" method="POST">
         <header>Download Thumbnail</header>
         <div class="url-input">
             <span class="title">Paste video url:</span>
             <div class="field">
                 <input type="text" placeholder="https://www.youtube.com/watch?v=0w4K8yW8gOg" required>
-                <input class="hidden-input" type="hidden">
+                <input class="hidden-input" type="hidden" name="imgurl">
                 <div class="bottom-line"></div>
             </div>
         </div>
@@ -28,7 +38,7 @@
             <i class='bx bxs-cloud-download icon'></i>
             <span>Paste video url to see preview</span>
         </div>
-        <button class="download-btn" type="submit">Download thumbnail</button>
+        <button class="download-btn" type="submit" name="button">Download thumbnail</button>
     </form>
 
     <script src="js/script.js"></script>
